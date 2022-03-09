@@ -9,7 +9,11 @@ router.get('/',(req,res)=>{
 router.post('/login',controller.login)
 
 router.get('/dashboard',(req,res)=>{
-    res.send(req.session.username)
+    if(req.session.username){
+        res.send(req.session.username)
+    }else{
+        res.redirect('/non?authentication=false')
+    }
 })
 
 module.exports = router

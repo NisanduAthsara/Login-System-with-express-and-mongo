@@ -12,9 +12,23 @@ exports.login = async (req,res)=>{
                 req.session.username = data.username
                 res.redirect('/dashboard')
             }else{
+                if(req.session.username){
+                    req.session.destroy((err)=>{
+                        if(err){
+                            console.log(err)
+                        }
+                    })
+                }
                 res.redirect('/?login=false')
             }
         }else{
+            if(req.session.username){
+                req.session.destroy((err)=>{
+                    if(err){
+                        console.log(err)
+                    }
+                })
+            }
             res.redirect('/?login=false')
         }
     }catch(err){
