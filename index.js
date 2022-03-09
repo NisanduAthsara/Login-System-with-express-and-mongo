@@ -3,6 +3,8 @@ const dotenv = require('dotenv/config')
 const app = express()
 const path = require('path')
 const mongoose = require('mongoose')
+const session = require('express-session')
+const {v4:uuidv4} = require('uuid')
 
 const router = require('./server/routes/router')
 
@@ -18,6 +20,12 @@ try{
 }catch(err){
     console.log(err);
 }
+
+app.use(session({
+    secret:uuidv4(),
+    resave:false,
+    saveUninitialized:true
+}))
 
 //Use Routes
 app.use(router)

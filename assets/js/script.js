@@ -1,8 +1,8 @@
 function getUrl(){
     const urlParams = new URLSearchParams(window.location.search);
-    const login = urlParams.get('login');
+    const Param = urlParams.get('login');
     
-    if(login == 'false'){
+    if(Param == 'false'){
         alert('Invalid Username or Password...!')
     }
 }

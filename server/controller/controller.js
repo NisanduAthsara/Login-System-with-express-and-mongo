@@ -9,6 +9,7 @@ exports.login = async (req,res)=>{
         if(data){
             const is_vali = await bcrypt.compare(req.body.password,data.password)
             if(is_vali){
+                req.session.username = data.username
                 res.redirect('/dashboard')
             }else{
                 res.redirect('/?login=false')

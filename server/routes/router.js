@@ -9,7 +9,7 @@ router.get('/',(req,res)=>{
 router.post('/login',controller.login)
 
 router.get('/dashboard',(req,res)=>{
-    res.send('Login Successful')
+    res.send(req.session.username)
 })
 
 module.exports = router
