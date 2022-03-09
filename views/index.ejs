@@ -1,17 +1,21 @@
 <!--Include header-->
 <%- include('inc/_header.ejs') %>
 
+    <script>
+        getUrl()
+    </script>
+
     <div class="container">
         <h1 class="text-center login-h">Login</h1>
         <div class="align-center">
-            <form action="#" method="POST">
+            <form action="/login" method="POST">
                 <div class="up_pad main_up">
                     <label for="email" class="">Email</label>
-                    <input type="text" name="email" id="" class="input-field" placeholder="Jhon Doe" required>
+                    <input type="text" name="email" id="" class="input-field" placeholder="example@gmail.com" required>
                 </div>
                 <div class="up_pad">
                     <label for="password" class="">Password</label>
-                    <input type="password" name="password" id="" class="input-field" placeholder="example@gmail.com" required>
+                    <input type="password" name="password" id="" class="input-field" placeholder="****" required>
                 </div>
                 <input type="submit" value="Submit" class="submit-btn">
             </form>
