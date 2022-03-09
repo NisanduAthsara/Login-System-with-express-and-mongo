@@ -1,3 +1,8 @@
+*{
+    padding:0;
+    margin:0;
+}
+
 body{
     font-family: 'Comfortaa', cursive;
 }
@@ -48,4 +53,32 @@ body{
     .err_banner{
         width:70%;
     }
+}
+
+.header-area{
+    display:inline-block;
+    width:100%;
+    background:rgb(122, 118, 118);
+}
+
+.header-area-h{
+    display:inline-block;
+    float:left;
+    padding:20px;
+    font-size:18px;
+}
+
+.header-area-logout-a{
+    display:inline-block;
+    float:right;
+    padding:20px;
+    color:#000;
+    font-size:18px;
+    font-weight: bolder;
+}
+
+.secret-h-dash{
+    text-align:center;
+    margin-top:60px;
+    font-size:40px;
 }

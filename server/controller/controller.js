@@ -1,6 +1,7 @@
 const DB = require('../model/model')
 const bcrypt = require('bcrypt')
 
+//login
 exports.login = async (req,res)=>{
     try{
         const uEmail = req.body.email
@@ -33,5 +34,21 @@ exports.login = async (req,res)=>{
         }
     }catch(err){
 
+    }
+}
+
+//logout
+module.exports.logout = (req,res)=>{
+    if(req.session.username){
+        req.session.destroy((err)=>{
+            if(err){
+                console.log(err)
+                res.send('Something went wrong').status(500)
+            }else{
+                res.redirect('/?logout=true')
+            }
+        })
+    }else{
+        res.redirect('error')
     }
 }

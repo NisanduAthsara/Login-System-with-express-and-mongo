@@ -28,6 +28,19 @@ body{
     margin-right:35%;
 }
 
+.logout-tag{
+    width:30%;
+    margin-left:35%;
+    margin-right:35%;
+    background:rgb(103, 199, 103);
+    margin-top:20px;
+    margin-bottom: 10px;
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-left:4px;
+    display:none;
+}
+
 .input-field{
     width:100%;
     padding:4px;
@@ -38,7 +51,7 @@ body{
 }
 
 .main_up{
-    margin-top:40px;
+    margin-top:20px;
 }
 
 .submit-btn{
@@ -64,7 +77,8 @@ body{
 }
 
 @media only screen and (max-width: 1000px) {
-    .align-center{
+    .align-center,
+    .logout-tag{
         width:40%;
         margin-left: 30%;
         margin-right: 30%;
@@ -72,7 +86,8 @@ body{
   }
 
 @media only screen and (max-width: 825px) {
-    .align-center{
+    .align-center,
+    .logout-tag{
         width:60%;
         margin-left: 20%;
         margin-right: 20%;
@@ -80,7 +95,8 @@ body{
   }  
 
 @media only screen and (max-width: 525px) {
-    .align-center{
+    .align-center,
+    .logout-tag{
         width:80%;
         margin-left: 10%;
         margin-right: 10%;

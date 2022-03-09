@@ -15,3 +15,13 @@ function getUrl2(){
         alert('Non Authenticate...! \nPlease Login...!')
     }
 }
+
+function display(){
+    const logout_tag = document.querySelector('#logout-tag')
+    const urlParams = new URLSearchParams(window.location.search);
+    const Param = urlParams.get('logout');
+
+    if(Param == 'true'){
+        logout_tag.style.display = 'block'
+    }
+}

@@ -7,6 +7,7 @@
 
     <div class="container">
         <h1 class="text-center login-h">Login</h1>
+        <div class="logout-tag" id="logout-tag">Successfully logout from the system</div>
         <div class="align-center">
             <form action="/login" method="POST">
                 <div class="up_pad main_up">
@@ -21,6 +22,10 @@
             </form>
         </div>
     </div>
+
+    <script>
+        display()
+    </script>
 
     <!--Include footer-->
     <%- include('inc/_footer.ejs') %>
