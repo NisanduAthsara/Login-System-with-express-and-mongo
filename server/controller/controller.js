@@ -100,7 +100,7 @@ module.exports.signup = async (req,res)=>{
 
         const data = await newUser.save(newUser)
         if(data){
-            res.send('User Added')
+            res.redirect('/signup?useradd=true')
         }else{
             res.send('Unable to add')
         }

@@ -21,7 +21,7 @@ router.post('/api/signup',controller.signup)
 router.get('/logout',controller.logout)
 
 router.get('/signup',(req,res)=>{
-    res.send(req.query)
+    res.render('signup',{title:'Sign Up'})
 })
 
 module.exports = router
