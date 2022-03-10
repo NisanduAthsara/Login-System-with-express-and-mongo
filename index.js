@@ -5,10 +5,13 @@ const path = require('path')
 const mongoose = require('mongoose')
 const session = require('express-session')
 const {v4:uuidv4} = require('uuid')
+const cookie_parser = require('cookie-parser')
 
 const router = require('./server/routes/router')
 
 const PORT = process.env.port || 3000
+
+app.use(cookie_parser());
 
 app.use(express.urlencoded({extended:true}))
 
@@ -39,6 +42,9 @@ app.use('/img',express.static(path.resolve(__dirname,'assets/img')))
 app.use('/js',express.static(path.resolve(__dirname,'assets/js')))
 
 app.get('*',(req,res)=>{
+    res.clearCookie('pwd');
+    res.clearCookie('uemail');
+    res.clearCookie('uname');
     res.render('error404',{title:'Error 404'})
 })
 

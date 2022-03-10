@@ -3,6 +3,9 @@ const router = express.Router()
 const controller = require('../controller/controller')
 
 router.get('/',(req,res)=>{
+    res.clearCookie('pwd');
+    res.clearCookie('uemail');
+    res.clearCookie('uname');
     res.render('index',{title:'Login'})
 })
 
@@ -21,7 +24,7 @@ router.post('/api/signup',controller.signup)
 router.get('/logout',controller.logout)
 
 router.get('/signup',(req,res)=>{
-    res.render('signup',{title:'Sign Up'})
+    res.render('signup',{title:'Sign Up',uname:req.cookies.uname,pwd:req.cookies.pwd,uemail:req.cookies.uemail})
 })
 
 module.exports = router

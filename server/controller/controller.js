@@ -6,6 +6,10 @@ const IsValid = require('./funcs')
 //login
 exports.login = async (req,res)=>{
     try{
+        res.clearCookie('pwd');
+        res.clearCookie('uemail');
+        res.clearCookie('uname');
+
         const uEmail = req.body.email
 
         const data = await DB.findOne({email:uEmail})
@@ -41,6 +45,9 @@ exports.login = async (req,res)=>{
 
 //logout
 module.exports.logout = (req,res)=>{
+    res.clearCookie('pwd');
+    res.clearCookie('uemail');
+    res.clearCookie('uname');
     if(req.session.username){
         req.session.destroy((err)=>{
             if(err){
@@ -64,28 +71,46 @@ module.exports.signup = async (req,res)=>{
         const u_name = req.body.username
 
         if(!u_name || typeof u_name !== 'string'){
+            res.cookie('pwd',pwd)
+            res.cookie('uemail',u_email)
+            res.clearCookie('uname');
             return res.redirect('/signup?usernameVal=false')
         }
 
         if(u_name.length < 3){
+            res.cookie('pwd',pwd)
+            res.cookie('uemail',u_email)
+            res.clearCookie('uname');
             return res.redirect('/signup?usernameLen=false')
         }
 
         if(!u_email || !IsValid(u_email)){
+            res.cookie('pwd',pwd)
+            res.cookie('uname',u_name)
+            res.clearCookie('uemail');
             return res.redirect('/signup?emailVal=false')
         }
 
         if(!pwd || typeof pwd !== 'string'){
+            res.cookie('uemail',u_email)
+            res.cookie('uname',u_name)
+            res.clearCookie('pwd');
             return res.redirect('/signup?passVal=false')
         }
 
         if(pwd.length < 5){
+            res.cookie('uemail',u_email)
+            res.cookie('uname',u_name)
+            res.clearCookie('pwd');
             return res.redirect('/signup?passLen=false')
         }
 
         const count = await DB.findOne({email:req.body.email})
         
         if(count){
+            res.cookie('pwd',pwd)
+            res.cookie('uname',u_name)
+            res.clearCookie('uemail');
             return res.redirect('/signup?emailUse=true')
         }
 
@@ -100,6 +125,9 @@ module.exports.signup = async (req,res)=>{
 
         const data = await newUser.save(newUser)
         if(data){
+            res.clearCookie('pwd');
+            res.clearCookie('uemail');
+            res.clearCookie('uname');
             res.redirect('/signup?useradd=true')
         }else{
             res.send('Unable to add')
